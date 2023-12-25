@@ -12,10 +12,58 @@
     - For any other route not defined in the server return 404
     Testing the server - run `npm run test-fileServer` command in terminal
  */
-const express = require('express');
-const fs = require('fs');
-const path = require('path');
+const express = require("express");
+const fs = require("fs");
+const path = require("path");
 const app = express();
+app.use(express.json());
 
+// Below is synchronous methond -> this will run and rest will wait
+// app.get("/files", (req, res) => {
+// 	let filesList = [];
+// 	try {
+// 		fs.readdirSync(path.join(__dirname, "./files/")).forEach((file) => {
+// 			filesList.push(file);
+// 		});
+// 		res.status(200).json({ files: filesList });
+// 	} catch (err) {
+// 		res.status(500).json({ error: "Failed to retrieve files" });
+// 	}
+// });
+
+// This is asynchronous methond -> this will run and other will too simultaneously
+app.get("/files", function (req, res) {
+	fs.readdir(path.join(__dirname, "./files/"), (err, files) => {
+		if (err) {
+			return res.status(500).json({ error: "Failed to retrieve files" });
+		}
+		res.json(files);
+	});
+});
+
+app.get("/files/:fileName", (req, res) => {
+	const name = req.params.fileName;
+	const filePath = path.join(__dirname, "./files", name);
+
+	fs.readFile(filePath, "utf8", (err, data) => {
+		if (err) {
+			return res.status(404).send("File Not Found");
+		}
+		res.status(200).send(data);
+	});
+	// the below code is run immediately without waiting hence will not work
+	// console.log(fileData);
+	// res.status(200).json({
+	// 	fileData,
+	// });
+});
+
+app.all('*', (req, res) => {
+	res.status(404).send("Route not found");
+});
+
+// app.listen(3000, () => {
+// 	console.log("Listening on port: 3000");
+// });
 
 module.exports = app;
