@@ -9,5 +9,18 @@ There is no automated test for this one, this is more for you to understand time
 */
 
 function calculateTime(n) {
+    let d = new Date()
+    let t1 = d.getTime();
+    console.log("Time before " + t1);
+    let a = 0;
+    for (let i = 0; i < n; i++){
+        a += i;
+    }
+    d = new Date()
+    let t2 = d.getTime();
+    console.log("Time after " + t2);
+    console.log(t2 - t1);
     return 0.01;
 }
+
+calculateTime(10000000000);
