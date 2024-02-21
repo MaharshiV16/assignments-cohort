@@ -1,0 +1,75 @@
+.profile {
+	min-height: 500px;
+	min-width: 500px;
+}
+
+.top {
+	background-color: aquamarine;
+	min-height: 200px;
+	min-width: 500px;
+}
+
+.profile-img {
+	height: 200px;
+	width: 200px;
+	object-fit: cover;
+	background-color: red;
+	border-radius: 50%;
+	position: relative;
+	top: 80px;
+}
+
+.middle {
+	background-color: aliceblue;
+	min-height: 200px;
+	min-width: 500px;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+	row-gap: 1em;
+}
+
+.person {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	column-gap: 0.5em;
+}
+
+.person-name {
+	font-weight: 700;
+}
+
+.person-age {
+	color: gray;
+}
+
+.location {
+	margin-bottom: 1.5em;
+	color: gray;
+}
+
+.bottom {
+	background-color: aliceblue;
+	min-height: 100px;
+	min-width: 500px;
+	border-top: 1px solid #1a1a1a;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	align-items: center;
+}
+
+.social {
+	display: flex;
+	flex-direction: column;
+}
+
+.number {
+	font-weight: 700;
+}
+
+.role {
+	font-size: small;
+	color: gray;
+}

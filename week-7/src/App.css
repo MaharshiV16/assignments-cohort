@@ -1,0 +1,12 @@
+#root {
+	margin: 0 auto;
+	text-align: center;
+	color: #1a1a1a;
+	height: 100%;
+}
+
+.App {
+	padding: 1em;
+	height: 100%;
+	width: 100%;
+}
